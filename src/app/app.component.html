@@ -1,0 +1,37 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body>
+
+    <div class="wrapper d-flex align-items-stretch">
+
+        <!-- Page SideBar  -->
+      <app-config-side-bar style="background: #1d1919;"></app-config-side-bar>
+
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5">
+          <button type="button" class="btn btn-primary">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+            <button type="button" class="btn btn-success" id="addUserBtn" data-toggle="modal" data-target="#addUserModal">
+              <i class="fa fa-plus-circle mr-2"></i> ADD
+            </button>
+            <button type="button" id="loadAllUsersBtn" class="btn btn-primary">
+              <i class="fa fa-refresh mr-2"></i> LOAD
+            </button>
+          </div>
+
+            <app-user-card></app-user-card>
+        </div>
+    </div>
+</body>
+
+</html>

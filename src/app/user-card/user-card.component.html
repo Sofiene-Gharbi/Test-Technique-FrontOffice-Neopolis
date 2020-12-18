@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-sm-4 " *ngFor="let user of userTab">
+        <div class="card sidebarCollapse">
+            <div class="card-body" (click)="onClickCards(user)">
+                <button type="button" id="deleteUserCardBtn" class="btn btn-primary pull-right" (click)="onDeleteUser(user)">
+                    <i class="fa fa-trash"></i>
+                </button>
+                <br>
+                <form>
+                  <input type="hidden" name="id" id="id" [value]="user._id">
+                    <div class="form-group">
+                        <label>NOM</label>
+                        <input type="text" name="Nom" class="form-control" placeholder="Nom" [value]="user._nom" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>PRENOM</label>
+                        <input type="text" name="Prenom" class="form-control" placeholder="Prenom" [value]="user._prenom" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>NOMBRE D'ENFANTS</label>
+                        <input type="number" name="nbEnfants" id="nbEnfants" class="form-control" value="0" min="0" [ngModel]="user._nombre_enfants" #nbr  [value]="user._nombre_enfants" (change)="onchangeNbrEnfant(nbr, user._id)">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- card.// -->
+    </div>
+    <div class="col-sm-4">
+        <div class="card" style="background-color: transparent; border-style: dashed; border-color: black;">
+            <div class="card-body" style="text-align: center;">
+                <button type="button" id="addUserCardBtn2" class="btn" style="font-size: 12.86em;" data-toggle="modal" data-target="#addUserModal">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </div>
+        </div>
+        <!-- card.// -->
+    </div>
+
+
+</div>
+
+
+
+<!-- Add User Modal -->
+<div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Ajouter Un Nouveau Utilisateur</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label>NOM</label>
+            <input type="text" name="Nom" class="form-control" placeholder="Nom" required #nom>
+          </div>
+          <div class="form-group">
+            <label>PRENOM</label>
+            <input type="text" name="Prenom" class="form-control" placeholder="Prenom" required #prenom>
+          </div>
+          <div class="form-group">
+            <label>NOMBRE D'ENFANTS</label>
+            <input type="number" name="nbEnfants" class="form-control" value="0" min="0" #nbr>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-primary" (click)="onAddUser(nom, prenom, nbr)">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+</div>
